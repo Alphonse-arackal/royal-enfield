@@ -21,7 +21,7 @@
         linear-gradient(180deg, #0b0f16 0%, #12161f 35%, #1a1d24 60%, #0d0f13 100%) ;
 
     background-attachment: fixed;
-}}
+}
   /* ===== Fixed content overlay ===== */
   .content-fixed{ position:fixed; inset:0; z-index:10; }
 
