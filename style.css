@@ -14,7 +14,7 @@
     inset: 0;
     z-index: 0;
 
-    background:
+    background: 
         linear-gradient(rgba(10,15,22,0.55), rgba(10,15,22,0.75)),
         url("images/bg_mountain.jpg") center center / cover no-repeat,
         radial-gradient(ellipse 80% 50% at 75% 30%, rgba(70,80,95,0.35), transparent 60%),
