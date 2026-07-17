@@ -14,14 +14,14 @@
     inset: 0;
     z-index: 0;
 
-    background: !important
+    background:
         linear-gradient(rgba(10,15,22,0.55), rgba(10,15,22,0.75)),
         url("images/bg_mountain.jpg") center center / cover no-repeat,
         radial-gradient(ellipse 80% 50% at 75% 30%, rgba(70,80,95,0.35), transparent 60%),
-        linear-gradient(180deg, #0b0f16 0%, #12161f 35%, #1a1d24 60%, #0d0f13 100%);
+        linear-gradient(180deg, #0b0f16 0%, #12161f 35%, #1a1d24 60%, #0d0f13 100%) !important;
 
     background-attachment: fixed;
-}
+}}
   /* ===== Fixed content overlay ===== */
   .content-fixed{ position:fixed; inset:0; z-index:10; }
 
