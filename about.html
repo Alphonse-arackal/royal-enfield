@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Royal Enfield</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --re-red:#e0272b; --re-red-dim:#7a1518; }
+  html{ scroll-behavior:smooth; }
+  html,body{ margin:0; padding:0; background:#05070a; overflow-x:hidden; font-family:'Inter',sans-serif; }
+  .font-display{ font-family:'Anton', sans-serif; letter-spacing:0.5px; }
+  .font-oswald{ font-family:'Oswald', sans-serif; }
+  .navlink{ position:relative; letter-spacing:1.5px; }
+  .navlink.active::after{ content:''; position:absolute; left:0; right:0; bottom:-8px; height:2px; background:var(--re-red); }
+  .page-bg{
+    position:fixed; inset:0; z-index:-1;
+    background:
+      radial-gradient(ellipse 80% 50% at 75% 10%, rgba(70,80,95,0.25), transparent 60%),
+      linear-gradient(180deg, #0b0f16 0%, #12161f 40%, #0d0f13 100%);
+  }
+  ::selection{ background:var(--re-red); color:#fff; }
+</style>
+</head>
+<body class="text-white">
+<div class="page-bg"></div>
+
+<!-- NAVBAR -->
+<nav class="flex items-center justify-between px-8 md:px-14 pt-7 pb-4">
+  <a href="index.html#top" class="font-display leading-tight text-lg tracking-wide">
+    ROYAL<br class="hidden sm:block"> ENFIELD
+  </a>
+  <div class="hidden md:flex items-center gap-10 text-xs font-oswald text-gray-300">
+    <a href="index.html#top" class="navlink hover:text-white transition">HOME</a>
+
+    <a href="about.html" class="navlink active text-white">ABOUT</a>
+    <a href="contact.html" class="navlink hover:text-white transition">CONTACT</a>
+  </div>
+  <button class="flex flex-col gap-1.5 w-6">
+    <span class="h-0.5 bg-white block"></span>
+    <span class="h-0.5 bg-white block"></span>
+    <span class="h-0.5 bg-white block"></span>
+  </button>
+</nav>
+
+<!-- HERO STRIP -->
+<center><div class="px-8 md:px-16 pt-10 md:pt-16 pb-4">
+  <p class="font-oswald text-sm tracking-[3px]" style="color:var(--re-red)">SINCE 1901</p>
+  <h1  class="font-display text-6xl md:text-8xl leading-[0.85] mt-3">ABOUT US</h1>
+</div></center>
+
+<!-- ============ ABOUT CONTENT ============ -->
+<section class="relative px-8 md:px-16 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div>
+      <h2 class="font-display text-4xl md:text-6xl leading-[0.95] mb-6">MADE LIKE<br>A GUN.<br>GOES LIKE<br>A BULLET.</h2>
+      <p class="text-gray-400 leading-relaxed mb-6 font-light">Royal Enfield is the oldest global motorcycle brand in continuous production. What began as a small engineering works has grown into a name riders trust on every continent — built simple, built tough, built to be ridden hard and fixed by hand.</p>
+      <p class="text-gray-400 leading-relaxed mb-6 font-light">Every motorcycle we make is designed around one idea: pure, uncomplicated motorcycling. No unnecessary electronics, no shortcuts — just a torquey engine, a comfortable seat, and a road ahead.</p>
+      <p class="text-gray-400 leading-relaxed font-light">From the cafe racer soul of the GT650 to the go-anywhere grit of the Himalayan, every bike in the lineup is built around the same promise: get on, ride, and let the road do the talking.</p>
+      <div class="flex gap-3 mt-8">
+        <a href="index.html#top" class="border border-white/70 hover:border-[var(--re-red)] hover:bg-[var(--re-red)] transition-all px-6 py-3 text-xs tracking-[2px] font-oswald">VIEW THE BIKES</a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-5">
+      <div class="bg-[#12161f] border border-white/5 rounded-sm p-7">
+        <div class="font-display text-4xl md:text-5xl" style="color:var(--re-red)">120+</div>
+        <div class="font-oswald text-xs tracking-[2px] text-gray-400 mt-2">YEARS OF HERITAGE</div>
+      </div>
+      <div class="bg-[#12161f] border border-white/5 rounded-sm p-7">
+        <div class="font-display text-4xl md:text-5xl" style="color:var(--re-red)">60+</div>
+        <div class="font-oswald text-xs tracking-[2px] text-gray-400 mt-2">COUNTRIES RIDDEN IN</div>
+      </div>
+      <div class="bg-[#12161f] border border-white/5 rounded-sm p-7">
+        <div class="font-display text-4xl md:text-5xl" style="color:var(--re-red)">6</div>
+        <div class="font-oswald text-xs tracking-[2px] text-gray-400 mt-2">MODEL FAMILIES</div>
+      </div>
+      <div class="bg-[#12161f] border border-white/5 rounded-sm p-7">
+        <div class="font-display text-4xl md:text-5xl" style="color:var(--re-red)">1M+</div>
+        <div class="font-oswald text-xs tracking-[2px] text-gray-400 mt-2">RIDERS WORLDWIDE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="relative px-8 md:px-16 py-16 md:py-24 border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
+    <p class="font-oswald text-sm tracking-[3px]" style="color:var(--re-red)">OUR JOURNEY</p>
+    <h2 class="font-display text-4xl md:text-6xl leading-[0.9] mt-3 mb-14">THE ROAD SO FAR</h2>
+
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="border-l-2 pl-5" style="border-color:var(--re-red)">
+        <div class="font-display text-3xl mb-2">1901</div>
+        <p class="text-gray-400 text-sm font-light">The first Royal Enfield motorcycle is built in Redditch, England.</p>
+      </div>
+      <div class="border-l-2 pl-5 border-white/10">
+        <div class="font-display text-3xl mb-2">1955</div>
+        <p class="text-gray-400 text-sm font-light">Production begins in India — the start of a new home for the brand.</p>
+      </div>
+      <div class="border-l-2 pl-5 border-white/10">
+        <div class="font-display text-3xl mb-2">2018</div>
+        <p class="text-gray-400 text-sm font-light">The 650 Twins launch, reviving the parallel-twin platform worldwide.</p>
+      </div>
+      <div class="border-l-2 pl-5 border-white/10">
+        <div class="font-display text-3xl mb-2">TODAY</div>
+        <p class="text-gray-400 text-sm font-light">Riders in 60+ countries carry the same philosophy forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="text-gray-500 px-8 md:px-16 py-10 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+  <div class="font-display text-white tracking-wide text-sm">ROYAL ENFIELD</div>
+  <p class="text-xs font-oswald tracking-wide">© 2026 Royal Enfield — Demo build for portfolio purposes.</p>
+</footer>
+
+</body>
+</html>

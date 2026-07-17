@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Royal Enfield</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --re-red:#e0272b; --re-red-dim:#7a1518; }
+  html{ scroll-behavior:smooth; }
+  html,body{ margin:0; padding:0; background:#05070a; overflow-x:hidden; font-family:'Inter',sans-serif; }
+  .font-display{ font-family:'Anton', sans-serif; letter-spacing:0.5px; }
+  .font-oswald{ font-family:'Oswald', sans-serif; }
+  .navlink{ position:relative; letter-spacing:1.5px; }
+  .navlink.active::after{ content:''; position:absolute; left:0; right:0; bottom:-8px; height:2px; background:var(--re-red); }
+  .page-bg{
+    position:fixed; inset:0; z-index:-1;
+    background:
+      radial-gradient(ellipse 80% 50% at 75% 10%, rgba(70,80,95,0.25), transparent 60%),
+      linear-gradient(180deg, #0b0f16 0%, #12161f 40%, #0d0f13 100%);
+  }
+  ::selection{ background:var(--re-red); color:#fff; }
+</style>
+</head>
+<body class="text-white">
+<div class="page-bg"></div>
+
+<!-- NAVBAR -->
+<nav class="flex items-center justify-between px-8 md:px-14 pt-7 pb-4">
+  <a href="index.html#top" class="font-display leading-tight text-lg tracking-wide">
+    ROYAL<br class="hidden sm:block"> ENFIELD
+  </a>
+  <div class="hidden md:flex items-center gap-10 text-xs font-oswald text-gray-300">
+    <a href="index.html#top" class="navlink hover:text-white transition">HOME</a>
+
+    <a href="about.html" class="navlink hover:text-white transition">ABOUT</a>
+    <a href="contact.html" class="navlink active text-white">CONTACT</a>
+  </div>
+  <button class="flex flex-col gap-1.5 w-6">
+    <span class="h-0.5 bg-white block"></span>
+    <span class="h-0.5 bg-white block"></span>
+    <span class="h-0.5 bg-white block"></span>
+  </button>
+</nav>
+
+<!-- HERO STRIP -->
+<div class="px-8 md:px-16 pt-10 md:pt-16 pb-4">
+  <p class="font-oswald text-sm tracking-[3px]" style="color:var(--re-red)">GET IN TOUCH</p>
+  <h1 class="font-display text-6xl md:text-8xl leading-[0.85] mt-3">CONTACT US</h1>
+</div>
+
+<!-- ============ CONTACT CONTENT ============ -->
+<section class="relative px-8 md:px-16 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
+    <div>
+      <p class="text-gray-400 leading-relaxed mb-10 font-light max-w-md">Questions about a bike, a dealership, or a custom build? Send us a message and a member of the team will get back to you.</p>
+
+      <div class="flex flex-col gap-6 mb-12">
+        <div class="flex items-start gap-4">
+          <span class="text-[var(--re-red)] text-lg mt-0.5">⚑</span>
+          <div>
+            <div class="font-oswald text-xs tracking-[2px] text-gray-400">SHOWROOM</div>
+            <div class="text-sm text-gray-200 mt-1">221B Highway Road, Bengaluru, KA 560001</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-[var(--re-red)] text-lg mt-0.5">☎</span>
+          <div>
+            <div class="font-oswald text-xs tracking-[2px] text-gray-400">PHONE</div>
+            <div class="text-sm text-gray-200 mt-1">+91 80 4567 8900</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-[var(--re-red)] text-lg mt-0.5">✉</span>
+          <div>
+            <div class="font-oswald text-xs tracking-[2px] text-gray-400">EMAIL</div>
+            <div class="text-sm text-gray-200 mt-1">ride@royalenfield-demo.com</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-[var(--re-red)] text-lg mt-0.5">◷</span>
+          <div>
+            <div class="font-oswald text-xs tracking-[2px] text-gray-400">HOURS</div>
+            <div class="text-sm text-gray-200 mt-1">Mon – Sat, 10:00 AM – 7:00 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- map placeholder -->
+      <div class="rounded-sm overflow-hidden border border-white/5 h-52">
+        <svg viewBox="0 0 500 220" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="220" fill="#12161f"/>
+          <path d="M0 140 L100 120 L180 150 L260 110 L340 140 L420 100 L500 130" stroke="#2a3140" stroke-width="6" fill="none"/>
+          <path d="M0 90 L120 70 L220 95 L320 60 L500 80" stroke="#2a3140" stroke-width="4" fill="none"/>
+          <circle cx="300" cy="115" r="8" fill="var(--re-red)"/>
+          <circle cx="300" cy="115" r="16" fill="var(--re-red)" opacity="0.25"/>
+        </svg>
+      </div>
+    </div>
+
+    <form id="contactForm" class="bg-[#0d1016] border border-white/5 rounded-sm p-8 flex flex-col gap-5 h-fit" onsubmit="return handleContactSubmit(event)">
+      <div>
+        <label class="font-oswald text-xs tracking-[2px] text-gray-400 block mb-2">NAME</label>
+        <input required type="text" placeholder="Your full name" class="w-full bg-transparent border-b border-white/15 focus:border-[var(--re-red)] outline-none py-2 text-sm transition-colors">
+      </div>
+      <div>
+        <label class="font-oswald text-xs tracking-[2px] text-gray-400 block mb-2">EMAIL</label>
+        <input required type="email" placeholder="you@example.com" class="w-full bg-transparent border-b border-white/15 focus:border-[var(--re-red)] outline-none py-2 text-sm transition-colors">
+      </div>
+      <div>
+        <label class="font-oswald text-xs tracking-[2px] text-gray-400 block mb-2">INTERESTED IN</label>
+        <select class="w-full bg-transparent border-b border-white/15 focus:border-[var(--re-red)] outline-none py-2 text-sm transition-colors text-gray-300">
+          <option class="bg-[#0d1016]">GT650</option>
+          <option class="bg-[#0d1016]">Interceptor 650</option>
+          <option class="bg-[#0d1016]">Himalayan 450</option>
+          <option class="bg-[#0d1016]">Meteor 350</option>
+          <option class="bg-[#0d1016]">Classic 350</option>
+          <option class="bg-[#0d1016]">General enquiry</option>
+        </select>
+      </div>
+      <div>
+        <label class="font-oswald text-xs tracking-[2px] text-gray-400 block mb-2">MESSAGE</label>
+        <textarea required rows="5" placeholder="Tell us what you're looking for..." class="w-full bg-transparent border-b border-white/15 focus:border-[var(--re-red)] outline-none py-2 text-sm transition-colors resize-none"></textarea>
+      </div>
+      <button type="submit" class="group flex items-center justify-center gap-3 border border-white/70 hover:border-[var(--re-red)] hover:bg-[var(--re-red)] transition-all px-6 py-3 text-xs tracking-[2px] font-oswald mt-2">
+        SEND MESSAGE
+        <span class="transition-transform group-hover:translate-x-1">→</span>
+      </button>
+      <p id="contactSuccess" class="hidden text-xs text-green-400 font-oswald tracking-wide">Message sent — thanks for reaching out. We'll be in touch soon.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="text-gray-500 px-8 md:px-16 py-10 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+  <div class="font-display text-white tracking-wide text-sm">ROYAL ENFIELD</div>
+  <p class="text-xs font-oswald tracking-wide">© 2026 Royal Enfield — Demo build for portfolio purposes.</p>
+</footer>
+
+<script>
+// demo only — no backend, just confirms the form was "sent"
+function handleContactSubmit(e){
+  e.preventDefault();
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('contactSuccess');
+  success.classList.remove('hidden');
+  form.reset();
+  setTimeout(()=> success.classList.add('hidden'), 5000);
+  return false;
+}
+</script>
+</body>
+</html>

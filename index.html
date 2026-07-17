@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Enfield | Bikes</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+  
+</head>
+<body>
+
+<!-- FIXED BACKGROUND (never moves) -->
+<div class="bg-fixed">
+  <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
+    <!-- distant mountain range -->
+    <!-- fog bands -->
+    <rect x="0" y="480" width="1600" height="60" fill="#2a3140" opacity="0.15"/>
+    <rect x="0" y="560" width="1600" height="40" fill="#2a3140" opacity="0.2"/>
+  </svg>
+</div>
+<div class="bg-noise"></div>
+<div class="bg-vignette"></div>
+<div class="ground-glow" id="groundGlow"></div>
+
+<!-- FIXED FOREGROUND CONTENT -->
+<div class="content-fixed text-white">
+
+  <!-- NAVBAR -->
+  <nav class="flex items-center justify-between px-8 md:px-14 pt-7 pb-4">
+    <div class="font-display leading-tight text-lg tracking-wide">
+      ROYAL<br class="hidden sm:block"> ENFIELD
+    </div>
+    <div class="hidden md:flex items-center gap-10 text-xs font-oswald text-gray-300">
+      <a href="#" class="navlink hover:text-white transition">HOME</a>
+      <a href="about.html" class="navlink hover:text-white transition">ABOUT</a>
+      <a href="contact.html" class="navlink hover:text-white transition">CONTACT</a>
+    </div>
+    <button class="flex flex-col gap-1.5 w-6">
+      <span class="h-0.5 bg-white block"></span>
+      <span class="h-0.5 bg-white block"></span>
+      <span class="h-0.5 bg-white block"></span>
+    </button>
+  </nav>
+
+  <!-- MAIN STAGE -->
+  <div class="relative w-full" style="height:calc(100vh - 74px)">
+
+    <!-- progress index dots (left) -->
+    <div class="hidden sm:flex absolute left-8 md:left-14 top-1/2 -translate-y-1/2 flex-col items-center gap-5 z-20">
+      <span class="idx-dot active w-2 h-2 rounded-full border border-white/40" data-dot="0"></span>
+      <div class="w-px h-56 bg-white/15 relative">
+        <div id="dotTrack" class="absolute left-1/2 -translate-x-1/2 top-0 w-px bg-white/70 transition-all duration-500" style="height:0%"></div>
+      </div>
+      <div class="flex flex-col gap-8 font-oswald text-[11px] text-gray-500">
+        <span class="dot-label" data-dot="1">02</span>
+        <span class="dot-label" data-dot="2">03</span>
+        <span class="dot-label" data-dot="3">04</span>
+        <span class="dot-label" data-dot="4">05</span>
+      </div>
+    </div>
+
+    <!-- LEFT TEXT PANEL -->
+    <div class="absolute left-8 md:left-24 top-1/2 -translate-y-1/2 max-w-md z-20" id="textPanel">
+      <div class="panel-fade">
+        <p class="font-oswald text-sm tracking-[3px]" style="color:var(--re-red)"><span id="idxNum">01</span> / 05</p>
+        <h1 id="bikeName" class="font-display headline-num text-6xl md:text-8xl leading-[0.85] mt-3 mb-4 tracking-tight" style="text-shadow:0 6px 30px rgba(0,0,0,0.6)">GT650</h1>
+        <p id="bikeTag" class="font-oswald text-lg md:text-xl tracking-wide mb-4" style="color:var(--re-red)">CAFE RACER. PURE SOUL.</p>
+        <p id="bikeDesc" class="text-gray-300 text-sm md:text-base leading-relaxed mb-7 font-light">A perfect blend of performance and style. The GT650 is built for those who live to ride.</p>
+        <button class="group flex items-center gap-3 border border-white/70 hover:border-[var(--re-red)] hover:bg-[var(--re-red)] transition-all px-6 py-3 text-xs tracking-[2px] font-oswald">
+          EXPLORE BIKE
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- BIKE STAGE (center-right) -->
+    <div class="absolute inset-0 z-10" id="bikeStage"></div>
+
+    <!-- RIGHT SPECS PANEL -->
+    <div class="specs-panel hidden lg:block absolute right-10 xl:right-16 top-1/2 -translate-y-1/2 w-64 bg-[#0d1016]/70 backdrop-blur-sm border border-white/5 rounded-sm p-6 z-20" id="specsPanel">
+      <div id="specsInner" class="flex flex-col gap-5"></div>
+    </div>
+
+    <!-- SCROLL DOWN -->
+    <div class="absolute left-8 md:left-14 bottom-8 flex flex-col items-center gap-2 z-20 text-[10px] font-oswald tracking-[2px] text-gray-400">
+      <div class="scrolldown-mouse"></div>
+      SCROLL DOWN
+    </div>
+
+    <!-- bottom chevron -->
+    <div class="absolute left-1/2 -translate-x-1/2 bottom-6 z-20 w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 animate-bounce">
+      ⌄
+    </div>
+  </div>
+</div>
+
+<div id="scrollDriver" style="position:relative; z-index:1;"></div>
+
+
+
+<script>
+  
+
+
+
+
+
+  const bikes = [
+  {
+    name:"GT650", tag:"CAFE RACER. PURE SOUL.",
+    desc:"A perfect blend of performance and style. The GT650 is built for those who live to ride.",
+    accent:"#e0272b", style:"cafe",
+    image:"images/gt.png",
+    specs:[
+      ["Engine","648cc","Parallel Twin"],
+      ["Power","47 HP","@ 7150 rpm"],
+      ["Torque","52 Nm","@ 5250 rpm"],
+      ["Gearbox","6 Speed",""],
+      ["Weight","202 kg","Kerb Weight"],
+    ]
+  },
+  {
+    name:"INTERCEPTOR", tag:"RETRO ROADSTER. RIDE FREE.",
+    desc:"Round headlamp, wide bars and a torquey twin. The Interceptor is easy going, all soul.",
+    accent:"#e0272b", style:"roadster",
+    image:"images/interceptor.png",
+    specs:[
+      ["Engine","648cc","Parallel Twin"],
+      ["Power","47 HP","@ 7150 rpm"],
+      ["Torque","52 Nm","@ 5250 rpm"],
+      ["Gearbox","6 Speed",""],
+      ["Weight","213 kg","Kerb Weight"],
+    ]
+  },
+  {
+    name:"HIMALAYAN", tag:"BUILT TO EXPLORE.",
+    desc:"Long travel suspension, rally-tuned ergonomics. The Himalayan goes where the road stops.",
+    accent:"#e0272b", style:"adventure",
+    image:"images/himalaya.png",
+    specs:[
+      ["Engine","452cc","Single Cyl."],
+      ["Power","40 HP","@ 8000 rpm"],
+      ["Torque","40 Nm","@ 5500 rpm"],
+      ["Gearbox","6 Speed",""],
+      ["Weight","196 kg","Kerb Weight"],
+    ]
+  },
+  {
+    name:"METEOR 350", tag:"CRUISE CONTROL.",
+    desc:"Relaxed riding stance and a smooth thumping single. The Meteor is made for the long haul.",
+    accent:"#e0272b", style:"cruiser",
+    image:"images/meteor.png",
+    specs:[
+      ["Engine","349cc","Single Cyl."],
+      ["Power","20.2 HP","@ 6100 rpm"],
+      ["Torque","27 Nm","@ 4000 rpm"],
+      ["Gearbox","5 Speed",""],
+      ["Weight","191 kg","Kerb Weight"],
+    ]
+  },
+  {
+    name:"CLASSIC 350", tag:"TIMELESS LEGEND.",
+    desc:"The silhouette that started it all. Classic 350 carries seven decades of heritage forward.",
+    accent:"#e0272b", style:"classic",
+    image:"images/classic.png",
+    specs:[
+      ["Engine","349cc","Single Cyl."],
+      ["Power","20.2 HP","@ 6100 rpm"],
+      ["Torque","27 Nm","@ 4000 rpm"],
+      ["Gearbox","5 Speed",""],
+      ["Weight","195 kg","Kerb Weight"],
+    ]
+  },
+];
+
+const specIcons = {
+  Engine:"⚙", Power:"⦿", Torque:"↻", Gearbox:"⛭", Weight:"◧"
+};
+
+
+const SCROLL_DURATION = 3; // Change to 3 or 4 for slower scrolling
+
+// ===== Build scroll spacers automatically =====
+const driver = document.getElementById("scrollDriver");
+
+driver.innerHTML = "";
+
+
+for (let i = 0; i < bikes.length; i++) {
+    const spacer = document.createElement("div");
+    spacer.style.height = `${SCROLL_DURATION * 100}vh`;
+    driver.appendChild(spacer);
+}
+
+
+// build stage layers
+const stage = document.getElementById('bikeStage');
+bikes.forEach((b,i)=>{
+  const layer = document.createElement('div');
+  layer.className = 'bike-layer';
+  layer.id = 'bikeLayer'+i;
+  layer.style.opacity = i===0 ? '1':'0';
+  layer.style.transform = 'translateY(0px)';
+
+  if(b.image){
+    // Real photo (transparent PNG/WebP recommended). Falls back to the
+    // generated line-art silhouette automatically if the file is missing.
+    const img = document.createElement('img');
+    img.src = b.image;
+    img.alt = b.name;
+    img.className = 'w-full h-full max-w-[560px] md:max-w-[680px] object-contain';
+    img.style.filter = 'drop-shadow(0 30px 40px rgba(0,0,0,0.5))';
+    img.onerror = () => { layer.innerHTML = bikeSVG(b.style, 'glow'+i); };
+    layer.appendChild(img);
+  } else {
+    layer.innerHTML = bikeSVG(b.style, 'glow'+i);
+  }
+
+  stage.appendChild(layer);
+});
+
+// build initial specs
+const specsInner = document.getElementById('specsInner');
+function renderSpecs(bike){
+  specsInner.innerHTML = bike.specs.map(([label,val,sub])=>`
+    <div class="spec-row flex items-start gap-3">
+      <span class="text-[var(--re-red)] text-lg leading-none mt-0.5">${specIcons[label]||'◆'}</span>
+      <div>
+        <div class="text-[10px] tracking-[2px] text-gray-400 font-oswald">${label.toUpperCase()}</div>
+        <div class="font-oswald text-base font-semibold">${val}</div>
+        ${sub ? `<div class="text-[11px] text-gray-500">${sub}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+renderSpecs(bikes[0]);
+
+// dots
+const dotEls = document.querySelectorAll('.idx-dot, .dot-label');
+function setActiveDot(i){
+  document.querySelectorAll('.idx-dot').forEach(d=> d.classList.toggle('active', d.dataset.dot==i));
+  document.querySelectorAll('.dot-label').forEach(d=> d.classList.toggle('text-white', d.dataset.dot==i));
+  document.getElementById('dotTrack').style.height = (i/4*100)+'%';
+}
+
+let currentIndex = 0;
+let ticking = false;
+const textPanel = document.getElementById('textPanel').firstElementChild;
+
+function updateText(i){
+  const b = bikes[i];
+  document.getElementById('idxNum').textContent = String(i+1).padStart(2,'0');
+  document.getElementById('bikeName').textContent = b.name;
+  document.getElementById('bikeTag').textContent = b.tag;
+  document.getElementById('bikeDesc').textContent = b.desc;
+  renderSpecs(b);
+}
+
+function onScroll(){
+  const y = window.scrollY;
+  const vh = window.innerHeight;
+  const raw = y / (vh * SCROLL_DURATION);                  // e.g. 0 -> 4.99
+  const total = bikes.length - 1;
+  const clamped = Math.max(0, Math.min(total, raw));
+  const idx = Math.min(total, Math.floor(clamped));
+  const progress = clamped - idx;          // 0..1 within this transition
+
+  // crossfade + parallax between idx and idx+1
+  bikes.forEach((b,i)=>{
+    const layer = document.getElementById('bikeLayer'+i);
+    if(!layer) return;
+    let opacity = 0, translate = 30;
+    if(i === idx){
+      opacity = 1 - progress;
+      translate = -progress*50;
+    } else if(i === idx+1){
+      opacity = progress;
+      translate = (1-progress)*60;
+    }
+    layer.style.opacity = opacity;
+    layer.style.transform = `translateY(${translate}px)`;
+  });
+
+  const newIndex = progress > 0.5 ? Math.min(total, idx+1) : idx;
+  if(newIndex !== currentIndex){
+    currentIndex = newIndex;
+    updateText(currentIndex);
+    setActiveDot(currentIndex);
+  }
+  ticking = false;
+}
+
+window.addEventListener('scroll', ()=>{
+  if(!ticking){
+    window.requestAnimationFrame(onScroll);
+    ticking = true;
+  }
+}, {passive:true});
+
+// click dots to jump
+document.querySelectorAll('.idx-dot, .dot-label').forEach(el=>{
+  el.style.cursor='pointer';
+  el.addEventListener('click', ()=>{
+    const i = parseInt(el.dataset.dot);
+    window.scrollTo({
+    top: i * window.innerHeight * SCROLL_DURATION,
+    behavior: 'smooth'
+});
+  });
+});
+
+onScroll();
+</script>
+
+</body>
+</html>
